@@ -27,6 +27,7 @@ public class TokenManager {
             } else
                 System.out.println("Token is good to use");
         } catch (Exception e) {
+            e.printStackTrace();
             throw new RuntimeException("ABORT!!! Token generation Failed");
         }
 
