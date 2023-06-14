@@ -1,15 +1,11 @@
 package com.spotify.oauth2.api;
 
 import com.spotify.oauth2.utils.ConfigLoader;
-import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 
 import java.time.Instant;
 import java.util.HashMap;
 
-import static com.spotify.oauth2.api.SpecBuilder.getResponseSpec;
-import static io.restassured.RestAssured.authentication;
-import static io.restassured.RestAssured.given;
 
 public class TokenManager {
 
@@ -26,7 +22,7 @@ public class TokenManager {
                 Response response = renewToken();
                 access_token = response.path("access_token"); // Value of access_token
                 int expiryTimeInSeconds = response.path("expires_in"); // value of expiry time in seconds i.e 3600
-                expiry_time = Instant.now().plusSeconds(expiryTimeInSeconds); // current time  + 3600 (60 min)
+                expiry_time = Instant.now().plusSeconds(expiryTimeInSeconds-300); // current time  + 3600 (60 min)
 
             } else
                 System.out.println("Token is good to use");
@@ -38,7 +34,7 @@ public class TokenManager {
     }
 
     private static Response renewToken() {
-        HashMap<String, String> formParams = new HashMap<String, String>();
+        HashMap<String, String> formParams = new HashMap<>();
         formParams.put("grant_type", ConfigLoader.getInstance().getGrantType());
         formParams.put("refresh_token", ConfigLoader.getInstance().getRefreshToken());
         //  formParams.put("redirect_uri","https://localhost:8081");

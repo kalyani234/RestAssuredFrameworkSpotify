@@ -17,7 +17,7 @@ import org.testng.annotations.Test;
 
 @Epic("Spotify 2.0 Auth")
 @Feature("Automate the Playlist API")
-public class Playlists_tests extends BaseTest{
+public class PlaylistsTests extends BaseTest{
 
 
     //Requestplaylist

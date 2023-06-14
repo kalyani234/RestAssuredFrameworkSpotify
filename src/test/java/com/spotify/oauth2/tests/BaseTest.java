@@ -8,7 +8,7 @@ public class BaseTest {
 
     @BeforeMethod
     public void beforeMethod(Method m){
-        System.out.println("SESSION STARTED OF METHOD "+ m.getName() );
-        System.out.println("THREAD ID" + Thread.currentThread().getId());
+        System.out.println("SESSION STARTED OF METHOD: "+ m.getName());
+        System.out.println("THREAD ID: " + Thread.currentThread().getId());
     }
 }

@@ -1,7 +1,4 @@
 package com.spotify.oauth2.api;
-
-import com.spotify.oauth2.pojo.Playlist;
-import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 
 import java.util.HashMap;
@@ -40,7 +37,7 @@ public class RestResource {
                 auth().oauth2(token).
             //    header("Authorization","Bearer " + token).
                 when().get(path).then()
-                .spec(getResponseSpec()).assertThat().statusCode(200)
+                .spec(getResponseSpec())
                 .extract().response();
 
     }
