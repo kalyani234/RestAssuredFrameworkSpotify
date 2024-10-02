@@ -7,6 +7,7 @@ This repository contains a RestAssured framework built for automating API tests 
 - [Technologies Used](#technologies-used)
 - [Setup and Installation](#setup-and-installation)
 - [Project Structure](#project-structure)
+- [Description of Each Folder](#description-of-each-folder)
 - [Running Tests](#running-tests)
 - [Test Cases Covered](#test-cases-covered)
 - [Contributing](#contributing)
@@ -62,19 +63,137 @@ The project follows a standard Maven structure:
 The project follows a standard Maven structure:
 ```
 RestAssuredFrameworkSpotify/
-    ├── src/
-    │   ├── main/
-    │   │   └── java/
-    │   │       └── base/                # Base classes for API requests
-    │   └── test/
-    │       ├── java/
-    │       │   ├── tests/               # Test classes
-    │       │   └── utils/               # Utility functions for test data and config management
-    │       └── resources/               # Properties and configuration files
-    ├── pom.xml                          # Maven dependencies and build configuration
-    ├── testng.xml                       # TestNG suite configuration
-    └── README.md                        # Project documentation
+├── .idea                                 # IDE configuration files
+├── src                                   # Source code directory
+│   ├── main                              # Main application source
+│   │   └── java                          # Java source files
+│   │       └── org
+│   │           └── example
+│   │               └── Main.java         # Entry point for the application
+│   ├── test                              # Test source code
+│   │   └── java                          # Java test files
+│   │       └── com
+│   │           └── spotify
+│   │               └── oauth2
+│   │                   ├── api
+│   │                   │   ├── applicationApi         # API related classes
+│   │                   │   ├── Playlistapi.java      # Playlist API interaction
+│   │                   │   ├── RestResource.java     # Base resource for API
+│   │                   │   ├── Route.java            # Defines API routes
+│   │                   │   ├── SpecBuilder.java      # Builds specifications for tests
+│   │                   │   └── StatusCode.java       # Contains HTTP status codes
+│   │                   ├── TokenManager.java          # Manages OAuth tokens
+│   │                   └── pojo
+│   │                       ├── Error.java              # Error response model
+│   │                       ├── ExternalUrls.java       # External URL model
+│   │                       ├── ExternalUrls__1.java
+│   │                       ├── Followers.java          # Followers model
+│   │                       ├── InnerError.java         # Inner error details
+│   │                       ├── Owner.java              # Owner model
+│   │                       ├── Playlist.java           # Playlist model
+│   │                       └── Tracks.java             # Tracks model
+│   └── tests                            # Test classes
+│       ├── BaseTest.java                # Base test class for all tests
+│       └── PlaylistsTests.java          # Tests for playlist functionality
+│   ├── utils                             # Utility classes
+│   │   ├── ConfigLoader.java             # Loads configuration settings
+│   │   ├── DataLoader.java               # Loads test data
+│   │   ├── FakerUtils.java               # Utility for generating fake data
+│   │   └── PropertyUtils.java            # Utility for property management
+│   └── resources                         # Resource files
+│       ├── allure.properties             # Allure reporting configuration
+│       ├── config.properties             # Application configuration
+│       └── data.properties               # Test data configuration
+├── .gitignore                            # Files and directories to ignore in git
+├── README.md                             # Project documentation
+├── RestAssuredFrameworkSpotify.iml       # IDE module configuration
+└── pom.xml                               # Maven dependencies and build configuration
+
 ```
+## Description of Each Folder
+
+- **`.idea`**: Contains IDE-specific settings and configurations for the project.
+
+- **`src`**: The primary source code directory, containing both application and test code.
+  
+  - **`main`**: Contains the main application source files.
+  
+    - **`java`**: Holds the Java source files for the application.
+    
+      - **`org/example/Main.java`**: The main entry point for the application, where execution begins.
+  
+  - **`test`**: Contains test code to validate the application's functionality.
+  
+    - **`java`**: Holds Java test files.
+    
+      - **`com/spotify/oauth2`**: Contains classes for testing the Spotify OAuth2 API.
+      
+        - **`api`**: Houses API-related classes for interacting with the Spotify API.
+        
+          - **`applicationApi`**: Contains classes that handle API requests.
+          
+          - **`Playlistapi.java`**: Class to interact with the Playlist API.
+          
+          - **`RestResource.java`**: Base class for all API interactions.
+          
+          - **`Route.java`**: Defines the API endpoints.
+          
+          - **`SpecBuilder.java`**: Builds specifications for API tests.
+          
+          - **`StatusCode.java`**: Defines HTTP status codes used in API responses.
+        
+        - **`TokenManager.java`**: Manages the OAuth tokens used for authentication.
+        
+        - **`pojo`**: Contains Plain Old Java Objects (POJOs) representing API responses.
+        
+          - **`Error.java`**: Model representing error responses from the API.
+          
+          - **`ExternalUrls.java`**: Represents external URLs associated with API resources.
+          
+          - **`ExternalUrls__1.java`**: Additional representation of external URLs.
+          
+          - **`Followers.java`**: Model for follower data.
+          
+          - **`InnerError.java`**: Represents detailed error information.
+          
+          - **`Owner.java`**: Model representing the owner of a resource.
+          
+          - **`Playlist.java`**: Represents a playlist resource.
+          
+          - **`Tracks.java`**: Model for track data.
+  
+  - **`tests`**: Contains individual test classes for various functionalities.
+  
+    - **`BaseTest.java`**: Base test class that provides common setup and teardown for all tests.
+    
+    - **`PlaylistsTests.java`**: Contains test cases specifically for validating playlist functionalities.
+
+  - **`utils`**: Contains utility classes that aid in various functionalities.
+  
+    - **`ConfigLoader.java`**: Loads configuration settings from property files.
+    
+    - **`DataLoader.java`**: Responsible for loading test data for API tests.
+    
+    - **`FakerUtils.java`**: Utility for generating fake data for testing purposes.
+    
+    - **`PropertyUtils.java`**: Manages properties and configurations used in tests.
+
+  - **`resources`**: Contains resource files used by the application and tests.
+  
+    - **`allure.properties`**: Configuration for Allure reporting.
+    
+    - **`config.properties`**: Application configuration settings.
+    
+    - **`data.properties`**: Contains test data configurations.
+
+- **`.gitignore`**: Specifies files and directories that should be ignored by Git.
+
+- **`README.md`**: Documentation for the project, explaining its purpose and usage.
+
+- **`RestAssuredFrameworkSpotify.iml`**: IDE module configuration file.
+
+- **`pom.xml`**: Maven project configuration file that defines dependencies and build settings.
+
 ## Running Tests
 
 1. **Run All Tests**:
